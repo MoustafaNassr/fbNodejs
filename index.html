@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Server Logs</title>
+</head>
+<body>
+  <h1>Server Logs</h1>
+  <ul id="log-list"></ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const logList = document.getElementById('log-list');
+    socket.on('log', log => {
+      const logItem = document.createElement('li');
+      logItem.textContent = log;
+      logList.appendChild(logItem);
+    });
+  </script>
+</body>
+</html>
